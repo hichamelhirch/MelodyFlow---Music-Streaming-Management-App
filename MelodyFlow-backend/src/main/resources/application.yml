@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: spotify-clone-backend
+  profiles:
+    active: dev
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://${postgres_url}:5432/${postgres_db}
+    username: ${postgres_username}
+    password: ${postgres_password}
+    hikari:
+      pool-name: Hikari
+      auto-commit: false
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        default_schema: spotify_clone
+  liquibase:
+    contexts: dev
+    change-log: classpath:db/changelog/master.xml
+    default-schema: spotify_clone
+    enabled: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+server:
+  port: 8080
+
+logging:
+  level:
+    ROOT: info
+    org.hibernate.SQL: DEBUG
+    org.sid: DEBUG
+
+okta:
+  oauth2:
+    issuer: https://dev-8n6qgbutiqc3uria.us.auth0.com/
+    client-id: ${AUTH0_CLIENT_ID}
+    client-secret: ${AUTH0_CLIENT_SECRET}
