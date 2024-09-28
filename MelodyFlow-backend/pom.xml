@@ -41,13 +41,6 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-docker-compose</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
@@ -111,15 +104,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <image>
-                        <name>hicham2001/MelodyFlow-backend:${project.version}</name>
-                        <env>
-                            <BP_JVM_VERSION>21.0.3</BP_JVM_VERSION>
-                            <BP_JVM_CDS_ENABLED>true</BP_JVM_CDS_ENABLED>
-                        </env>
-                    </image>
-                </configuration>
+
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
